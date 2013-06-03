@@ -1,0 +1,12 @@
+<%= form_tag "/search", :method => "get" do %>
+  <% label_tag(:q) %>
+  <%= text_field_tag :q, nil, value: 'Ex: "first_name=Geoff AND company=gSchool"' %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<ul>
+<% @badge_scans.each do |badge_scan| %>
+  <li><%= badge_scan.last_name %>, <%= badge_scan.first_name %>: 
+    <%= badge_scan.scan_time %></li>
+<% end %>
+</ul>

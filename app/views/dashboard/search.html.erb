@@ -1,12 +1,36 @@
-<%= form_tag "/search", :method => "get" do %>
-  <% label_tag(:q) %>
-  <%= text_field_tag :q, nil, value: 'Ex: "first_name=Geoff AND company=gSchool"' %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="row-fluid">
+  <div class="span12">
+  <%= form_tag "/search", :method => "get" do %>
+    <% label_tag(:q) %>
+    <%= text_field_tag :q, nil %>
+    <%= submit_tag("Search") %>
+  <% end %>
+  </div>
+</div>
 
-<ul>
-<% @badge_scans.each do |badge_scan| %>
-  <li><%= badge_scan.last_name %>, <%= badge_scan.first_name %>: 
-    <%= badge_scan.scan_time %></li>
-<% end %>
-</ul>
+
+<div class="row-fluid">
+  <div class="span12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Last name</th>
+          <th>First name</th>
+          <th>Company</th>
+          <th>Scan Time</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% @badge_scans.each do |badge_scan| %>
+        <tr>
+          <td><%= badge_scan.last_name %></td>
+          <td><%= badge_scan.first_name %></td>
+          <td><%= badge_scan.company %></td>
+          <td><%= badge_scan.scan_time %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

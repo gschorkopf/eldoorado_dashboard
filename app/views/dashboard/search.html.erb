@@ -1,18 +1,24 @@
-<p></p>
+<h1></h1>
 
 <div class="row-fluid">
   <div class="span12">
   <%= form_tag "/search", :method => "get" do %>
     <% label_tag(:q) %>
-    <%= text_field_tag :q, nil, placeholder: "Use GQL", class: 'span12' %>
-    <%#= submit_tag("Search") %>
+    <%= text_field_tag :q, nil, placeholder: "Use GQL", class: 'span12', autocomplete: "off" %>
   <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12" id="svg-graph">
+    <svg id="svg">
+    </svg>
   </div>
 </div>
 
 <% if @badge_scans.empty? %>
 <p>
-Helpful messaging here.
+We didn't find anything. (Make this helpful)
 </p>
 <% else %>
 <div class="row-fluid">
@@ -33,7 +39,7 @@ Helpful messaging here.
           <td><%= badge_scan.last_name %></td>
           <td><%= badge_scan.first_name %></td>
           <td><%= badge_scan.company %></td>
-          <td><%= time_ago_in_words badge_scan.scan_time %></td>
+          <td><%= badge_scan.scan_time %></td>
         </tr>
       <% end %>
       </tbody>

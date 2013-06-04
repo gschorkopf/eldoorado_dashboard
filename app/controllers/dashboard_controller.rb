@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   def show
+    gon.badge_scans = []
   end
 
   def search
@@ -25,6 +26,7 @@ class DashboardController < ApplicationController
       end
     end
     @badge_scans.sort_by! {|scan| scan.scan_time }.reverse!
-
+    gon.badge_scans = @badge_scans
+    gon.door_coords = [{"Atrium Door (In)" => {x: 200, y: 100}}]
   end
 end

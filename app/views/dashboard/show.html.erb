@@ -1,11 +1,10 @@
-<p></p>
+<h1></h1>
 
 <div class="row-fluid">
   <div class="span12">
   <%= form_tag "/search", :method => "get" do %>
     <% label_tag(:q) %>
-    <%= text_field_tag :q, nil, placeholder: "Use GQL", class: 'span12' %>
-    <%#= submit_tag("Search") %>
+    <%= text_field_tag :q, nil, placeholder: "Use GQL", class: 'span12', autocomplete: "off" %>
   <% end %>
   </div>
 </div>

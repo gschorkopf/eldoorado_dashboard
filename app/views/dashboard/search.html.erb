@@ -1,13 +1,20 @@
+<p></p>
+
 <div class="row-fluid">
   <div class="span12">
   <%= form_tag "/search", :method => "get" do %>
     <% label_tag(:q) %>
-    <%= text_field_tag :q, nil, placeholder: "Use GQL:" %>
-    <%= submit_tag("Search") %>
+    <%= text_field_tag :q, nil, placeholder: "Use GQL", class: 'span12' %>
+    <%#= submit_tag("Search") %>
   <% end %>
   </div>
 </div>
 
+<% if @badge_scans.empty? %>
+<p>
+Helpful messaging here.
+</p>
+<% else %>
 <div class="row-fluid">
   <div class="span12">
     <table class="table table-striped">
@@ -26,10 +33,11 @@
           <td><%= badge_scan.last_name %></td>
           <td><%= badge_scan.first_name %></td>
           <td><%= badge_scan.company %></td>
-          <td><%= badge_scan.scan_time %></td>
+          <td><%= time_ago_in_words badge_scan.scan_time %></td>
         </tr>
       <% end %>
       </tbody>
     </table>
   </div>
 </div>
+<% end %>

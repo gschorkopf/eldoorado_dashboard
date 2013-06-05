@@ -26,7 +26,7 @@ class DashboardController < ApplicationController
         end
       end
     end
-    @badge_scans.sort_by! {|scan| scan.scan_time }.reverse!
+    @badge_scans.sort_by! {|scan| scan.scan_time }
     gon.badge_scans = @badge_scans
   end
 end

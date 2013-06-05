@@ -7,8 +7,20 @@ $(document).ready(function() {
                     "Back Door (In)": {x: 765, y: 215, fill: "red"},
                     "Front Door (In)": {x: 50, y: 725, fill: "purple"},
                     "Knoll Door (In)": {x: 50, y: 300, fill: "blue"}};
-  var compCoords = {"gSchool": {x: 300, y: 500},
-                    "Roximity": {x: 800, y: 200}}
+  var compCoords = {"gSchool": {x: 870, y: 390},
+                    "Roximity": {x: 550, y: 100},
+                     "Uber": {x: 460, y: 100},
+                     "ThoughtBot": {x: 460, y: 180},
+                     "Pivotal Labs": {x: 550, y: 180},
+                     "Active Junky": {x: 350, y: 170},
+                     "Knoll": {x: 200, y: 100},
+                     "Gather Employee": {x: 250, y: 600},
+                     "GoSpotCheck": {x: 360, y: 670},
+                     "One Reach": {x: 470, y: 670},
+                     "Slice of Lime": {x: 565, y: 670},
+                     "Support Local": {x: 670, y: 670},
+                     "Rentbits": {x: 830, y: 670},
+                     "Closely": {x: 870, y: 510}}
 
   var svgContainer = d3.select("#svg");
   var index = 0;

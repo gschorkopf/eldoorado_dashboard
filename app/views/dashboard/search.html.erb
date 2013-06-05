@@ -37,7 +37,7 @@
     </div>
 
     <div class="pull-right" id="svg-table">
-      <h4 style="text-align: center;">Badge Scan Results</h4>
+      <h4 style="text-align: center;">Recent Scan Results</h4>
 
       <table class="table table-striped">
         <thead>
@@ -48,7 +48,7 @@
         </thead>
 
         <tbody>
-        <% @badge_scans.each do |badge_scan| %>
+        <% @badge_scans.reverse[0..10].each do |badge_scan| %>
           <tr>
             <td><%= badge_scan.first_name %> <%= badge_scan.last_name %> (<%= badge_scan.company %>)</td>
             <td><%= DateTime.parse(badge_scan.scan_time).strftime("%b %e, %l:%M %p") %></td>

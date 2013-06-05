@@ -37,17 +37,18 @@
     </div>
 
     <div class="pull-right" id="svg-table">
-      <h4 class="centerize">Current Badge Scan</h4>
+      <h4 class="centerize current-title">Most Recent Badge Scan</h4>
       <div id="current-object">
+        <% filler_data = @badge_scans.reverse.first %>
         <dl>
           <dt>Entrant</dt>
-            <dd>John Doe</dd>
+            <dd class="data-entrant"><%= "#{filler_data.first_name} #{filler_data.last_name}" %></dd>
           <dt>Entry Point</dt>
-            <dd>Atrium Door (In)</dd>
+            <dd class="data-entry"><%= filler_data.door %></dd>
           <dt>Company</dt>
-            <dd>Roximity</dd>
+            <dd class="data-company"><%= filler_data.company %></dd>
           <dt>Scan Time</dt>
-            <dd>May 29, 4:27 PM</dd>
+            <dd class="data-time"><%= DateTime.parse(filler_data.scan_time).strftime("%b %e, %l:%M %p") %></dd>
         </dl>
       </div>
 

@@ -43,7 +43,12 @@ $(document).ready(function() {
       var xValue = getRand(660, 440);
       var yValue = getRand(380, 280);
 
-      // $("#current-object").text("hello")
+      var scanDate = new Date(scan.scan_time);
+
+      $("#current-object").find(".data-entry").text(scan.door);
+      $("#current-object").find(".data-entrant").text((scan.first_name + " " + scan.last_name));
+      $("#current-object").find(".data-time").text(scanDate.toDateString());
+      $("#current-object").find(".data-company").text(scan.company);
 
       // set up and transition the circle
       group
@@ -99,6 +104,7 @@ $(document).ready(function() {
     } else {
       svgContainer.selectAll("g").remove();
       svgContainer.selectAll("text").remove();
+      $(".current-title").text("Most Recent Badge Scan");
       $('#svg-cover').show();
       $('#svg-again').show();
     };
@@ -107,6 +113,7 @@ $(document).ready(function() {
   $('#svg-start').on('click', function(){
     $('#svg-cover').hide();
     this.remove();
+    $(".current-title").text("Current Badge Scan");
     getNext();
   });
 

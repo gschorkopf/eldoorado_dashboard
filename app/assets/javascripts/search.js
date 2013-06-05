@@ -15,33 +15,49 @@ $(document).ready(function() {
   function getNext() {
     scan = badgeScans[index];
     console.log("got scan " + scan);
-
+ 
     if (scan) {
-      var scanCircle = svgContainer.selectAll("circle.scan")
-        .data([scan], function(d) { return d.scan_time });
-
-      scanCircle.exit().remove();
-      
-      scanCircle
+      var scanAction = svgContainer.selectAll("g")
+        .data([scan], function(d){return d.scan_time});
+ 
+      scanAction.exit().remove();
+ 
+      var group = scanAction
         .enter()
+        .append("g");
+ 
+      // set up and transition the circle
+      group
         .append('circle')
         .attr('class', 'scan')
-        .attr('r', 20)
-        .text(function(d){return d.first_name;})
-        .attr("cx", function(d){
-        console.log("entered through door: " + d.door + " at " + d.scan_time);
-        return doorCoords[d.door].x;
-        })
-        .attr("cy", function(d){return doorCoords[d.door].y;})
+        .attr('r', 30)
         .style("fill", function(d){return doorCoords[d.door].fill;})
+        .attr("cx", function(d){return doorCoords[d.door].x;})
+        .attr("cy", function(d){return doorCoords[d.door].y;})
         .transition()
         .duration(1000)
         .attr("cx", function(d){return compCoords[d.company].x;})
-        .attr("cy", function(d){return compCoords[d.company].y;})
-
+        .attr("cy", function(d){return compCoords[d.company].y;});
+ 
+      // set up and transition the text
+      group
+        .append("text")
+        .attr('class', 'scan')
+        .text(function(d){return d.first_name})
+        .attr("alignment-baseline", "middle")
+        .attr("text-anchor", "middle")
+        .attr("x", function(d){return doorCoords[d.door].x;})
+        .attr("y", function(d){return doorCoords[d.door].y;})
+        .transition()
+        .duration(1000)
+        .attr("x", function(d){return compCoords[d.company].x;})
+        .attr("y", function(d){return compCoords[d.company].y;});
+ 
       window.setTimeout(getNext, 2000);
-
       index++;
+    } else {
+      alert("Mission complete")
+      svgContainer.selectAll("g").remove();
     };
   };
 

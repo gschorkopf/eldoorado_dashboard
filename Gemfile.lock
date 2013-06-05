@@ -70,6 +70,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.4)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -152,6 +153,7 @@ DEPENDENCIES
   gon
   hashie
   jquery-rails
+  pg
   rails (= 3.2.13)
   rest-client
   rspec-rails

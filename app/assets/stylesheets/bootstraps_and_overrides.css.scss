@@ -3,10 +3,31 @@
 @import url(http://fonts.googleapis.com/css?family=Monoton);
 
 #svg {
+  position: absolute;
   background-image: url(galvanize.png);
   height: 750px;
   width: 940px;
   border: 1px solid black;
+}
+
+#svg-cover {
+  position: absolute;
+  height: 750px;
+  width: 940px;
+  z-index: 10;
+  background-color: black;
+  opacity: 0.5;
+}
+
+#svg-start, #svg-again {
+  position: absolute;
+  z-index: 20;
+  margin-top: 50px;
+  left: 32%;
+}
+
+#svg-again {
+  display: none;
 }
 
 #title {

@@ -84,8 +84,21 @@ $(document).ready(function() {
       index++;
     } else {
       svgContainer.selectAll("g").remove();
+      svgContainer.selectAll("text").remove();
+      $('#svg-cover').show();
+      $('#svg-again').show();
     };
   };
 
-  getNext();
+  $('#svg-start').on('click', function(){
+    $('#svg-cover').hide();
+    this.remove();
+    getNext();
+  });
+
+  // $('#svg-again').on('click', function(){
+  //   $('#svg-again').hide();
+  //   $('#svg-cover').hide();
+  //   getNext();
+  // });
 });

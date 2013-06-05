@@ -1,21 +1,45 @@
-<h1></h1>
-
-<div class="row-fluid">
-  <div class="span12">
-  <%= form_tag "/search", :method => "get" do %>
-    <% label_tag(:q) %>
-    <%= text_field_tag :q, nil, placeholder: "Use GQL", class: 'span12', autocomplete: "off" %>
-  <% end %>
+<div class="container">
+  <div class='row-fluid push-from-top'>
+    <div class='span2'>
+      <img src="assets/eldoorado.png" id="logo" />
+    </div>
+    <div class='span10'>
+      <h1 id="title">Eldoorado</h1>
+      <h5>Eldoorado is a data visualization system for the <a href="http://www.github.com/gschorkopf/eldoorado" target="_blank">Eldoorado API</a>, using the <a href="http://www.github.com/gschorkopf/eldoorado_gem" target="_blank">Eldoorado Ruby wrapper</a>.</h5>
+      <p>The app takes a raw txt feed from the <a href="http://www.galvanize.it" target="_blank">Galvanize</a> space in Denver to feed data about the security of the building.</p>
+    </div>
   </div>
-</div>
 
-<div class="row-fluid">
-  <div class="span12">
-    For example, try:
-    <ul>
-      <li>first_name=geoff AND last_name=schorkopf</li>
-      <li>last_name=casimir OR company=gschool</li>
-      <li>door=atrium AND company=roximity</li>
-    </ul>
+
+  <div class="row-fluid push-from-top">
+    <div class="span12">
+    <%= form_tag "/search", :method => "get" do %>
+      <% label_tag(:q) %>
+      <%= text_field_tag :q, nil, placeholder: "Ex: first_name=franklin", class: 'span12', autocomplete: "off" %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span6">
+      Parameters to use:
+      <ul>
+        <li>first_name</li>
+        <li>last_name</li>
+        <li>company</li>
+        <li>door</li>
+      </ul>
+      <P>All matches are case insensitive and partial matches are accepted by default (for example, "first_name=geoff" will match to the first name "Geoffrey"). Doors in Galvanize include the Front, Atrium, Back, and Knoll doors.</p>
+    </div>
+    <div class="span6">
+      For example, try:
+      <ul>
+        <li>first_name=geoff AND last_name=schorkopf</li>
+        <li>last_name=casimir OR company=gschool</li>
+        <li>door=atrium AND company=roximity</li>
+      </ul>
+      <p>This language is meant to be flexible. Adding the operator "OR" will match anything on both sides of the conjunction. Adding the operator "AND" will only return matches for both sides of the conjunction.</P>
+      <p>Note: "AND" and "OR" are case sensitive.</P>
+    </div>
   </div>
 </div>

@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
     scans = badges_gem
     @badge_scans = []
     if params[:q]
+      @params = params[:q]
       queries = params[:q].gsub("AND", "&").split("OR")
       queries.each do |query|
         parsed = Rack::Utils.parse_nested_query query

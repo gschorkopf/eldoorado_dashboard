@@ -1,8 +1,37 @@
 @import "bootstrap";
 
+@import url(http://fonts.googleapis.com/css?family=Monoton);
+
 #svg {
   background-image: url(galvanize.png);
   height: 750px;
   width: 940px;
   border: 1px solid black;
+}
+
+#title {
+  font-family: 'Monoton', cursive;
+  font-size: 32px;
+}
+
+#logo {
+  border: 1px solid black;
+}
+
+.push-from-top {
+  padding-top: 50px;
+}
+
+.map-container {
+  width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#svg-graph {
+  width: 350px;
+}
+
+#svg-table {
+
 }

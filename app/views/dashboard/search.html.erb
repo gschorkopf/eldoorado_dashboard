@@ -1,49 +1,56 @@
-<h1></h1>
-
-<div class="row-fluid">
-  <div class="span12">
-  <%= form_tag "/search", :method => "get" do %>
-    <% label_tag(:q) %>
-    <%= text_field_tag :q, nil, placeholder: "Use GQL", class: 'span12', autocomplete: "off" %>
-  <% end %>
+<div class="container">
+  <div class='row-fluid push-from-top'>
+    <div class='span2'>
+      <img src="assets/eldoorado.png" id="logo" />
+    </div>
+    <div class='span10'>
+      <h1 id="title">Eldoorado</h1>
+    </div>
   </div>
+
+  <div class="row-fluid push-from-top">
+    <div class="span12">
+    <%= form_tag "/search", :method => "get" do %>
+      <% label_tag(:q) %>
+      <%= text_field_tag :q, nil, placeholder: "#{@params}", class: 'span12', autocomplete: "off" %>
+    <% end %>
+    </div>
+  </div>
+
+  <% if @badge_scans.empty? %>
+  <p>
+  We didn't find anything. (Make this helpful)
+  </p>
+</div>
+  <% else %>
 </div>
 
-<% if @badge_scans.empty? %>
-<p>
-We didn't find anything. (Make this helpful)
-</p>
-<% else %>
-<div class="row">
-  <div class="span12" id="svg-graph">
-    <svg id="svg">
-    </svg>
-  </div>
-</div>
+<div class="map-container">
+  <div class="map-row">
+    <div class="pull-left" id="svg-graph">
+      <svg id="svg">
+      </svg>
+    </div>
 
-<div class="row-fluid">
-  <div class="span12">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Last name</th>
-          <th>First name</th>
-          <th>Company</th>
-          <th>Scan Time</th>
-        </tr>
-      </thead>
+    <div class="pull-right" id="svg-table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Entrant Details</th>
+            <th>Scan Time</th>
+          </tr>
+        </thead>
 
-      <tbody>
-      <% @badge_scans.each do |badge_scan| %>
-        <tr>
-          <td><%= badge_scan.last_name %></td>
-          <td><%= badge_scan.first_name %></td>
-          <td><%= badge_scan.company %></td>
-          <td><%= badge_scan.scan_time %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+        <tbody>
+        <% @badge_scans.each do |badge_scan| %>
+          <tr>
+            <td><%= badge_scan.first_name %> <%= badge_scan.last_name %> (<%= badge_scan.company %>)</td>
+            <td><%= badge_scan.scan_time %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 <% end %>

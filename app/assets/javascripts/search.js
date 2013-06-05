@@ -31,7 +31,9 @@ $(document).ready(function() {
         .append('circle')
         .attr('class', 'scan')
         .attr('r', 30)
-        .style("fill", function(d){return doorCoords[d.door].fill;})
+        .style("fill", "white")
+        .attr("stroke", function(d){return doorCoords[d.door].fill;})
+        .attr("stroke-width", 5)
         .attr("cx", function(d){return doorCoords[d.door].x;})
         .attr("cy", function(d){return doorCoords[d.door].y;})
         .transition()
@@ -56,7 +58,7 @@ $(document).ready(function() {
       window.setTimeout(getNext, 2000);
       index++;
     } else {
-      alert("Mission complete")
+      // alert("Mission complete")
       svgContainer.selectAll("g").remove();
     };
   };

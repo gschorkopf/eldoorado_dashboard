@@ -43,6 +43,8 @@ $(document).ready(function() {
       var xValue = getRand(660, 440);
       var yValue = getRand(380, 280);
 
+      // $("#current-object").text("hello")
+
       // set up and transition the circle
       group
         .append('circle')

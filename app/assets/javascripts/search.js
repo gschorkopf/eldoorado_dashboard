@@ -40,8 +40,8 @@ $(document).ready(function() {
         .enter()
         .append("g");
       
-      var xValue = getRand(500, 200);
-      var yValue = getRand(500, 200);
+      var xValue = getRand(660, 440);
+      var yValue = getRand(380, 280);
 
       // set up and transition the circle
       group

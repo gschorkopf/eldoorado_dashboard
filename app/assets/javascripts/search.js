@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  // var badgeScans = gon.badge_scans;
-
   var badgeScans = gon.badge_scans;
   
   var doorCoords = {"Atrium Door (In)": {x: 260, y: 360, fill: "green"},

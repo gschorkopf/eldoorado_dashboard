@@ -9,6 +9,11 @@
   </div>
 </div>
 
+<% if @badge_scans.empty? %>
+<p>
+We didn't find anything. (Make this helpful)
+</p>
+<% else %>
 <div class="row">
   <div class="span12" id="svg-graph">
     <svg id="svg">
@@ -16,11 +21,6 @@
   </div>
 </div>
 
-<% if @badge_scans.empty? %>
-<p>
-We didn't find anything. (Make this helpful)
-</p>
-<% else %>
 <div class="row-fluid">
   <div class="span12">
     <table class="table table-striped">

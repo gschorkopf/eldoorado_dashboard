@@ -1,0 +1,14 @@
+<h4 class="centerize current-title">Most Recent Badge Scan</h4>
+
+<div id="current-object">
+  <dl>
+    <dt>Entrant</dt>
+      <dd class="data-entrant"><%= "#{scan.first_name} #{scan.last_name}" %></dd>
+    <dt>Entry Point</dt>
+      <dd class="data-entry"><%= scan.door %></dd>
+    <dt>Company</dt>
+      <dd class="data-company"><%= scan.company %></dd>
+    <dt>Scan Time</dt>
+      <dd class="data-time"><%= DateTime.parse(scan.scan_time).strftime("%b %e, %l:%M %p") %></dd>
+  </dl>
+</div>

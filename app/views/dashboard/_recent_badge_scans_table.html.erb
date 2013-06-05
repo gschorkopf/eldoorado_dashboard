@@ -1,0 +1,19 @@
+<h4 class="centerize">Recent Scan Results</h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Entrant Details</th>
+      <th>Scan Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% scans.each do |badge_scan| %>
+    <tr>
+      <td><%= badge_scan.first_name %> <%= badge_scan.last_name %> (<%= badge_scan.company %>)</td>
+      <td><%= DateTime.parse(badge_scan.scan_time).strftime("%b %e, %l:%M %p") %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

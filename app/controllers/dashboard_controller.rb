@@ -1,11 +1,13 @@
 class DashboardController < ApplicationController
   def show
+    @autofill = "Example: first_name=franklin"
+
     gon.badge_scans = []
   end
 
   def search
     if params[:q]
-      @params = params[:q]
+      @autofill = params[:q]
       @badge_scans = return_badge_scans_from_params(params[:q])
     end
 

@@ -1,0 +1,8 @@
+<div class="row-fluid push-from-top">
+  <div class="span12">
+  <%= form_tag "/search", :method => "get" do %>
+    <% label_tag(:q) %>
+    <%= text_field_tag :q, nil, placeholder: "#{@autofill}", class: 'span12', autocomplete: "off" %>
+  <% end %>
+  </div>
+</div>

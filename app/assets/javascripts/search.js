@@ -25,6 +25,7 @@ $(document).ready(function() {
   var svgContainer = d3.select("#svg");
   var index = 0;
   var scan = null;
+  var timeLapse = 0;
 
   function getNext() {
     scan = badgeScans[index];
@@ -51,6 +52,8 @@ $(document).ready(function() {
       $("#current-object").find(".data-time").text(dateString);
       $("#current-object").find(".data-company").text(scan.company);
 
+      timeLapse = (gon.times[(index+1)]*100)
+
       // set up and transition the circle
       group
         .append('circle')
@@ -62,7 +65,7 @@ $(document).ready(function() {
         .attr("cx", function(d){return doorCoords[d.door].x;})
         .attr("cy", function(d){return doorCoords[d.door].y;})
         .transition()
-        .duration(1000)
+        .duration(timeLapse)
         .attr("cx", function(d){
           if (compCoords[d.company]){
             return compCoords[d.company].x;
@@ -86,7 +89,7 @@ $(document).ready(function() {
         .attr("x", function(d){return doorCoords[d.door].x;})
         .attr("y", function(d){return doorCoords[d.door].y;})
         .transition()
-        .duration(1000)
+        .duration(timeLapse)
         .attr("x", function(d){
           if (compCoords[d.company]){
             return compCoords[d.company].x;
@@ -100,7 +103,8 @@ $(document).ready(function() {
             return yValue;
           };});
  
-      window.setTimeout(getNext, 2000);
+      
+      window.setTimeout(getNext, (timeLapse*2));
       index++;
     } else {
       svgContainer.selectAll("g").remove();
@@ -124,7 +128,6 @@ $(document).ready(function() {
     badgeScans = gon.badge_scans;
     $('#svg-again').hide();
     $('#svg-cover').hide();
-    debugger
     getNext();
   });
 });

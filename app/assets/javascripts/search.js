@@ -118,9 +118,13 @@ $(document).ready(function() {
     getNext();
   });
 
-  // $('#svg-again').on('click', function(){
-  //   $('#svg-again').hide();
-  //   $('#svg-cover').hide();
-  //   getNext();
-  // });
+  $('#svg-again').on('click', function(){
+    index = 0;
+    scan = null;
+    badgeScans = gon.badge_scans;
+    $('#svg-again').hide();
+    $('#svg-cover').hide();
+    debugger
+    getNext();
+  });
 });

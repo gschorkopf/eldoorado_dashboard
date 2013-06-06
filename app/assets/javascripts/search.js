@@ -120,7 +120,9 @@ $(document).ready(function() {
     $('#svg-cover').hide();
     this.remove();
     $(".current-title").text("Currently Graphed Badge Scan");
-    startClock(24852);
+    if (gon.counter) {
+      startClock(24852);
+    };
     getNext();
   });
 

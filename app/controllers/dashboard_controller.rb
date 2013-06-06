@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
         @autofill = params[:q]
         @badge_scans = badges_gem.reverse[-502..-1]
         gon.time_lapses = time_lapses_between_scans(@badge_scans)
-        gon.counter = time_lapses_between_scans(@badge_scans).count-(@badge_scans.count)
+        gon.counter = true
       else
         @autofill = params[:q]
         @badge_scans = return_badge_scans_from_params(params[:q])

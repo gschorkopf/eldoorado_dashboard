@@ -133,7 +133,9 @@ $(document).ready(function() {
     $('#svg-again').hide();
     $('#svg-cover').hide();
     $('#current-object').append('<div id="timer" class="pull-right"></div>');
-    startClock(24852);
+    if (gon.counter) {
+      startClock(24852);
+    };
     getNext();
   });
 
@@ -166,6 +168,6 @@ $(document).ready(function() {
     setInterval(function() {
       elapsed_seconds = elapsed_seconds + 1;
       $('#timer').text(get_elapsed_time_string(elapsed_seconds));
-    }, (1000/150));
+    }, (1000/152));
   };
 });

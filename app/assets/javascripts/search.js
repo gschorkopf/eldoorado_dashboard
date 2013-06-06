@@ -52,7 +52,7 @@ $(document).ready(function() {
       $("#current-object").find(".data-time").text(dateString);
       $("#current-object").find(".data-company").text(scan.company);
 
-      timeLapse = (gon.times[(index+1)]*100)
+      timeLapse = (gon.times[(index+1)]*5)
 
       // set up and transition the circle
       group
@@ -104,7 +104,7 @@ $(document).ready(function() {
           };});
  
       
-      window.setTimeout(getNext, (timeLapse*2));
+      window.setTimeout(getNext, (timeLapse));
       index++;
     } else {
       svgContainer.selectAll("g").remove();

@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
 
     if params[:q]
       if params[:q] = "yesterday"
-        @badge_scans = return_badge_scans_from_params("door=atrium OR door=back OR door=front OR door=knoll")[-3000..-1][2496..-1]
+        @badge_scans = return_badge_scans_from_params("door=atrium OR door=back OR door=front OR door=knoll")[-3000..-1][2498..-1]
       else
         @autofill = params[:q]
         @badge_scans = return_badge_scans_from_params(params[:q])

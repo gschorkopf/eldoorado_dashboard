@@ -1,20 +1,11 @@
 <div class="container">
-  <div class='row-fluid push-from-top'>
-    <div class='span2'>
-      <img src="assets/eldoorado.png" id="logo" />
-    </div>
-    <div class='span10'>
-      <h1 id="title">Eldoorado</h1>
-      <p>Put helpful stuff here!</p>
-    </div>
-  </div>
+  <%= render "synopsis" %>
 
   <%= render "shared/search_bar" %>
 
   <% if @badge_scans.empty? %>
-  <p>
-  Put helpful stuff here!
-  </p>
+  <h5 style="color: red;">We were unable to understand your query, <%= @autofill %>.</h5>
+  <%= render "helpers" %>
 </div>
   <% else %>
 </div>
@@ -27,7 +18,7 @@
 
     <div class="pull-right" id="svg-table">
       <%= render "recent_badge_scan_box", scan: @badge_scans.reverse.first %>
-      <%= render "recent_badge_scans_table", scans: @badge_scans[0..10] %>
+      <%= render "recent_badge_scans_table", scans: @badge_scans.reverse[0..10] %>
     </div>
 
   </div>

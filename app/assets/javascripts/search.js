@@ -44,10 +44,11 @@ $(document).ready(function() {
       var yValue = getRand(380, 280);
 
       var scanDate = new Date(scan.scan_time);
+      var dateString = scanDate.toDateString() + ", " + scanDate.toTimeString().split(" ")[0]
 
       $("#current-object").find(".data-entry").text(scan.door);
       $("#current-object").find(".data-entrant").text((scan.first_name + " " + scan.last_name));
-      $("#current-object").find(".data-time").text(scanDate.toDateString());
+      $("#current-object").find(".data-time").text(dateString);
       $("#current-object").find(".data-company").text(scan.company);
 
       // set up and transition the circle
@@ -113,7 +114,7 @@ $(document).ready(function() {
   $('#svg-start').on('click', function(){
     $('#svg-cover').hide();
     this.remove();
-    $(".current-title").text("Current Badge Scan");
+    $(".current-title").text("Currently Graphed Badge Scan");
     getNext();
   });
 

@@ -6,6 +6,8 @@ class DashboardController < ApplicationController
   end
 
   def search
+    @badge_scans = []
+
     if params[:q]
       @autofill = params[:q]
       @badge_scans = return_badge_scans_from_params(params[:q])

@@ -10,7 +10,7 @@ describe DashboardController do
 
   describe "GET search" do
     it "should render the search url given valid q" do
-      VCR.use_cassette('found_company') do
+      VCR.use_cassette('geoff_tapes') do
         get :search, q: "first_name=Geoff"
         response.should render_template(:search)
       end

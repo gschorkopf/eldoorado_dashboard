@@ -9,15 +9,18 @@ class DashboardController < ApplicationController
     @badge_scans = []
 
     if params[:q]
-      if params[:q] = "yesterday"
-        @badge_scans = return_badge_scans_from_params("door=atrium OR door=back OR door=front OR door=knoll")[-3000..-1][2498..-1]
+      if params[:q] == "yesterday"
+        @autofill = params[:q]
+        @badge_scans = badges_gem.reverse[-502..-1]
+        gon.time_lapses = time_lapses_between_scans(@badge_scans)
+        gon.counter = time_lapses_between_scans(@badge_scans).count-(@badge_scans.count)
       else
         @autofill = params[:q]
         @badge_scans = return_badge_scans_from_params(params[:q])
+        gon.time_lapses = a = []; (@badge_scans.count).times do; a << 200; end
       end
     end
     
-    gon.times = @badge_scans.to_enum(:each_with_index).collect {|b, i| (Time.parse(@badge_scans[i].scan_time).to_i-Time.parse(@badge_scans[i-1].scan_time).to_i+1)}
     gon.badge_scans = @badge_scans
   end
 end

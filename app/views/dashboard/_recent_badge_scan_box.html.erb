@@ -1,6 +1,9 @@
 <h4 class="centerize current-title">Most Recent Badge Scan</h4>
 
 <div id="current-object">
+  <% if @autofill == "yesterday" %>
+    <div id="timer" class="pull-right"></div>
+  <% end %>
   <dl>
     <dt>Entrant</dt>
       <dd class="data-entrant"><%= "#{scan.first_name} #{scan.last_name}" %></dd>

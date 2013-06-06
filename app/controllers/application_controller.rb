@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  helper_method :badges_gem
+
   def badges_gem
     @badges_gem ||= Eldoorado::BadgeScan.all
   end
@@ -34,5 +36,15 @@ class ApplicationController < ActionController::Base
 
   def scan_includes_value(scan, param, value)
     scan[param.strip].downcase.include?(value.downcase.strip)
+  end
+
+  def time_lapses_between_scans(badge_scans)
+    badge_scans.to_enum(:each_with_index).collect do |badge_scan, i|
+      current_time = Time.parse(badge_scans[i].scan_time).to_i
+      previous_time = Time.parse(@badge_scans[i-1].scan_time).to_i
+
+      distance_between_times = current_time - previous_time + 1
+      distance_between_times
+    end
   end
 end

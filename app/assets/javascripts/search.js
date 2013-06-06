@@ -52,7 +52,7 @@ $(document).ready(function() {
       $("#current-object").find(".data-time").text(dateString);
       $("#current-object").find(".data-company").text(scan.company);
 
-      timeLapse = (gon.times[(index+1)]*5)
+      timeLapse = (gon.time_lapses[(index+1)]*5)
 
       // set up and transition the circle
       group
@@ -65,7 +65,7 @@ $(document).ready(function() {
         .attr("cx", function(d){return doorCoords[d.door].x;})
         .attr("cy", function(d){return doorCoords[d.door].y;})
         .transition()
-        .duration(timeLapse)
+        .duration(timeLapse) //1000
         .attr("cx", function(d){
           if (compCoords[d.company]){
             return compCoords[d.company].x;
@@ -89,7 +89,7 @@ $(document).ready(function() {
         .attr("x", function(d){return doorCoords[d.door].x;})
         .attr("y", function(d){return doorCoords[d.door].y;})
         .transition()
-        .duration(timeLapse)
+        .duration(timeLapse) //1000
         .attr("x", function(d){
           if (compCoords[d.company]){
             return compCoords[d.company].x;
@@ -104,11 +104,12 @@ $(document).ready(function() {
           };});
  
       
-      window.setTimeout(getNext, (timeLapse));
+      window.setTimeout(getNext, (timeLapse*1.5)); //2000
       index++;
     } else {
       svgContainer.selectAll("g").remove();
       svgContainer.selectAll("text").remove();
+      $("#timer").remove();
       $(".current-title").text("Most Recent Badge Scan");
       $('#svg-cover').show();
       $('#svg-again').show();
@@ -119,6 +120,7 @@ $(document).ready(function() {
     $('#svg-cover').hide();
     this.remove();
     $(".current-title").text("Currently Graphed Badge Scan");
+    startClock(24852);
     getNext();
   });
 
@@ -128,6 +130,40 @@ $(document).ready(function() {
     badgeScans = gon.badge_scans;
     $('#svg-again').hide();
     $('#svg-cover').hide();
+    $('#current-object').append('<div id="timer" class="pull-right"></div>');
+    startClock(24852);
     getNext();
   });
+
+  function get_elapsed_time_string(total_seconds) {
+    function pretty_time_string(num) {
+      return ( num < 10 ? "0" : "" ) + num;
+    }
+
+    var hours = Math.floor(total_seconds / 3600);
+    total_seconds = total_seconds % 3600;
+
+    var minutes = Math.floor(total_seconds / 60);
+    total_seconds = total_seconds % 60;
+
+    var seconds = Math.floor(total_seconds);
+
+    // Pad the minutes and seconds with leading zeros, if required
+    hours = pretty_time_string(hours);
+    minutes = pretty_time_string(minutes);
+    seconds = pretty_time_string(seconds);
+
+    // Compose the string for display
+    var currentTimeString = hours + ":" + minutes + ":" + seconds;
+
+    return currentTimeString;
+  };
+
+  var elapsed_seconds = 0;
+  function startClock(elapsed_seconds) {
+    setInterval(function() {
+      elapsed_seconds = elapsed_seconds + 1;
+      $('#timer').text(get_elapsed_time_string(elapsed_seconds));
+    }, (1000/150));
+  };
 });

@@ -1,18 +1,18 @@
-### Eldoorado
+=== Eldoorado
 
 Eldoorado is my first individual project with the gSchool Ruby on Rails program. The project goal was to create an API and build an app to consume it. Eldoorado uses service-oriented design through four main repos: an API that accepts JSON requests, a Ruby gem to wrap that API, a dashboard using D3js to visualize that data, and a simple Ruby app to convert txt files into seed data for my API.
 
-#### Eldoorado Dashboard
+==== Eldoorado Dashboard
 
 This dashboard uses the Eldoorado GEM to collect badge scan data in the month of May 2013 to build out data visualizations.
 
-#### Eldoorado GEM
+==== Eldoorado GEM
 
 The Eldoorado gem wraps my API using Hashie to create easy-to-use objects.
 
 Repo: http://github.com/gschorkopf/eldoorado_gem
 
-#### Eldoorado API
+==== Eldoorado API
 
 The primary API connects to a postgres database and accepts JSON post and get requests.
 
